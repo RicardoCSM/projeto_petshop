@@ -2,6 +2,25 @@
 require_once "validador_acesso.php";
 ?>
 
+<?php
+
+  $servicos = array();
+
+  //Abrir o arquivo txt
+  $arquivo = fopen('arquivo.txt', 'r');
+
+  //Enquanto houver linhas a serem recuperados
+  while(!feof($arquivo)) {
+    $registro = fgets($arquivo);
+    $servicos[] = $registro;
+  }
+
+  //Fechando arquivo txt
+  fclose($arquivo);
+
+   
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -26,13 +45,6 @@ require_once "validador_acesso.php";
         width: 100%;
         margin: 0 auto;
       }
-
-      footer {
-            position: fixed;
-            bottom:0;
-            left:0;
-            width: 100%;
-    }
 
     </style>
   </head>
@@ -66,16 +78,29 @@ require_once "validador_acesso.php";
             </div>
             
             <div class="card-body">
-    
-              <div class="card mb-3 bg-light">
-                <div class="card-body">
-                  <h5 class="card-title"></h5>
-                  <h6 class="card-subtitle mb-2 text-muted"></h6>
-                  <p class="card-text"></p>
 
+              <?php foreach($servicos as $servico) { ?>
+
+                <?php 
+
+                  $servico_dados = explode('#', $servico);
+
+                  if(count($servico_dados) < 3) {
+                    continue;
+                  }
+
+                ?>
+
+                <div class="card mb-3 bg-light">
+                  <div class="card-body">
+                    <h5 class="card-title"><?php echo $servico_dados[0];?></h5>
+                    <h6 class="card-subtitle mb-2 text-muted"><?php echo $servico_dados[1];?></h6>
+                    <p class="card-text"><?php echo $servico_dados[2];?></p>
+                  </div>
                 </div>
-              </div>
-            
+              
+              <?php } ?>  
+
               <div class="row mt-5 d-flex">
                 <div class="col-6">
                   <a href="principal.php" class="btn btn-lg btn-block" style="background-color: #336599; width: 265px; color: #FFF; text-align: center;">Voltar</a>
@@ -87,14 +112,6 @@ require_once "validador_acesso.php";
       </div>
     </div>
     <!-- Fim Consultar Serviço -->
-
-    <footer class="d-flex justify-content-center">
-        <h6 class="align-self-center">Desenvolvido por Ricardo Costa</h6>   
-    </footer>
-
-
-
-
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
