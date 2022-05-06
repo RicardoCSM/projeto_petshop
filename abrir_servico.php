@@ -54,7 +54,7 @@ require_once "validador_acesso.php";
                         <div class="row">
                             <div class="col">
                             
-                            <form method="POST" action="registra_servico.php">
+                            <form method="post" action="registra_servico.php">
                                 <div class="form-group">
                                 <label>Título</label>
                                 <input name="titulo" type="text" class="form-control" placeholder="Título">
