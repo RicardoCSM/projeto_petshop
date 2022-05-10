@@ -5,8 +5,7 @@
     //variavel que verifica se a autenticação foi realizada
     $usuario_autenticado = false;
     $usuario_id = null;
-    $usuario_perfil_id = $user['perfil_id'];
-
+    $usuario_perfil_id = null;
 
     $perfis = array(1 => 'Administrativo', 2 => 'Usuário');
 
@@ -25,6 +24,7 @@
         if( $user['email'] == $_POST['email'] && $user['senha'] == $_POST['senha'] ) {
             $usuario_autenticado = true;
             $usuario_id = $user['id'];
+            $usuario_perfil_id = $user['perfil_id'];
         };
 
     };

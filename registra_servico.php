@@ -1,11 +1,12 @@
 <?php 
+    session_start();
 
     //Modificação do texto para evitar bug
     $titulo = str_replace ('#', '-', $_POST['titulo']);
     $descricao = str_replace ('#', '-', $_POST['descricao']);
 
     //Montagem do texto
-    $texto = $titulo .'#'. $_POST['categoria'] . '#' . $descricao . PHP_EOL;
+    $texto = $_SESSION['id'] . '#' . $titulo .'#'. $_POST['categoria'] . '#' . $descricao . PHP_EOL;
 
     //Abrindo o arquivo
     $arquivo = fopen('arquivo.txt', 'a');

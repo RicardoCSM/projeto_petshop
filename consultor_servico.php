@@ -84,6 +84,14 @@ require_once "validador_acesso.php";
                 <?php 
 
                   $servico_dados = explode('#', $servico);
+                  //Verifica se o id é do tipo usuário
+                  if($_SESSION['perfil_id'] == 2) {
+                    //Caso seja só ira exibir se ele foi criado pelo usuário
+                    if($_SESSION['id'] != $servico_dados[0]) {
+                      continue;
+                    };
+
+                  }
 
                   if(count($servico_dados) < 3) {
                     continue;
@@ -93,9 +101,9 @@ require_once "validador_acesso.php";
 
                 <div class="card mb-3 bg-light">
                   <div class="card-body">
-                    <h5 class="card-title"><?php echo $servico_dados[0];?></h5>
-                    <h6 class="card-subtitle mb-2 text-muted"><?php echo $servico_dados[1];?></h6>
-                    <p class="card-text"><?php echo $servico_dados[2];?></p>
+                    <h5 class="card-title"><?php echo $servico_dados[1];?></h5>
+                    <h6 class="card-subtitle mb-2 text-muted"><?php echo $servico_dados[2];?></h6>
+                    <p class="card-text"><?php echo $servico_dados[3];?></p>
                   </div>
                 </div>
               
