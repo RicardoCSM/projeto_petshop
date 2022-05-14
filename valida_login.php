@@ -9,17 +9,35 @@
 
     $perfis = array(1 => 'Administrativo', 2 => 'Usuário');
 
-    
+    $cadastros = array();
 
-    //usuarios do sistema
-    $usuarios_app = array(
+    $arquivo = fopen('dados.txt', 'r');
 
-        array('id' => 1, 'email' => 'adm@teste.com', 'senha' => '123456', 'perfil_id' => 1),
-        array('id' => 2, 'email' => 'user@teste.com', 'senha' => '123456', 'perfil_id' => 1),
-        array('id' => 3, 'email' => 'jose@teste.com', 'senha' => '123456', 'perfil_id' => 2),
-        array('id' => 4, 'email' => 'maria@teste.com', 'senha' => '123456', 'perfil_id' => 2),
+    $id = 1;
+    while(!feof($arquivo)) {
+        $dados = fgets($arquivo);
 
-    );
+        $auxiliar = explode('#', $dados);
+
+        if(empty($auxiliar[0])) {
+            continue;
+        } 
+
+        $auxiliar[1] = trim(preg_replace('/\s\s+/', ' ', $auxiliar[1]));
+
+        $usuarios_app[] = array(
+            'id' => $id,
+            'email' => $auxiliar[0],
+            'senha' => $auxiliar[1],
+            'perfil_id' => $auxiliar[0] == 'adm@gmail.com' ? 1 : 2
+        );
+
+        // $usuarios_app[0]['perfil_id'] = 1;
+        
+        $id++;
+    }
+
+    fclose($arquivo);
 
     foreach($usuarios_app as $user) {
 

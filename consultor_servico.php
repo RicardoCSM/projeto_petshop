@@ -85,6 +85,7 @@ require_once "validador_acesso.php";
 
                   $servico_dados = explode('#', $servico);
                   //Verifica se o id é do tipo usuário
+
                   if($_SESSION['perfil_id'] == 2) {
                     //Caso seja só ira exibir se ele foi criado pelo usuário
                     if($_SESSION['id'] != $servico_dados[0]) {
