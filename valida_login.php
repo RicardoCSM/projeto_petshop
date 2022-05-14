@@ -9,6 +9,8 @@
 
     $perfis = array(1 => 'Administrativo', 2 => 'Usuário');
 
+    
+
     //usuarios do sistema
     $usuarios_app = array(
 

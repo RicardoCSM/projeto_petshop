@@ -120,7 +120,7 @@
 
                             <div class="card-body">
 
-                                <form method="post">
+                                <form action="cadastro.php" method="post">
                                    
                                     <div class="form-group">
                                         <input name="email" type="email" class="form-control" placeholder="E-mail">
