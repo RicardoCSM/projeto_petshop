@@ -1,4 +1,4 @@
-<?php 
+<?php
 
     $email = str_replace ('#', '-', $_POST['email']);
     $senha = str_replace ('#', '-', $_POST['senha']);
@@ -8,15 +8,15 @@
 
     $dados = fopen('dados.txt', 'a');
     
-    if(filter_var($email, FILTER_VALIDATE_EMAIL) && strlen($senha) >= 8 && $senha == $confirmar_senha) {
+    if(filter_var($email, FILTER_VALIDATE_EMAIL) && strlen($senha) >= 8 && $senha == $confirmar_senha) {   
         fwrite($dados, $dado);
+        fclose($dados);
+
+        header('Location: login.php?login=cadastro_sucesso');
     }
     else {
-        echo "Erro no cadastro";
+        header('Location: login.php?login=erro_cadastro');
     }
 
-    fclose($dados);
-
-    header('Location: login.php')
 
 ?>

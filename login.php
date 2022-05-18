@@ -133,6 +133,22 @@
                                     <div class="form-group">
                                         <input name="confirmar_senha" type="password" class="form-control" placeholder="Confirme sua senha">
                                     </div>
+
+                                    <?php if(isset($_GET['login']) && $_GET['login'] == 'erro_cadastro'){?>
+
+                                        <div class="text-danger">
+                                        E-mail ou senha inválido(s)/incorreto(s)
+                                        </div>
+
+                                    <?php } ?>
+
+                                    <?php if(isset($_GET['login']) && $_GET['login'] == 'cadastro_sucesso'){?>
+
+                                        <div class="text-success">
+                                        Cadastro feito com sucesso
+                                        </div>
+
+                                    <?php } ?>
          
                                     <button class="btn btn-lg btn-block" type="submit">Entrar</button>
                                 </form>
